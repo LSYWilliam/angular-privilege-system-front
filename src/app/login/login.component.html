@@ -1,0 +1,51 @@
+<div class="login_bg">
+  <!--登录界面开始-->
+  <div class="login_con" [style.display]="loginFrom?'block':'none'">
+    <div class="login_logo"></div>
+    <div class="platform_name">欢迎登录数据计算平台</div>
+    <div class="font_common">{{loginInfo}}</div>
+    <!--login-form组件 开始-->
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group>
+            <input type="text" nz-input formControlName="userName" placeholder="请输入用户名"/>
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('userName')?.dirty && validateForm.get('userName')?.errors">请输入用户名!
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group>
+            <input type="password" nz-input formControlName="password" placeholder="请输入密码"/>
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">请输入密码!
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button class="login-form-button" [nzType]="'primary'">{{butName}}</button>
+          <div class="register"><span [style.display]="isInfo?'none':'inline'">还没有账号？</span><a href="">{{registerName}}</a></div>
+          <div class="wechat" [style.display]="isInfo?'block':'none'">
+            <i class="icon-wechat"></i>
+            <span>使用微信登录</span>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <!--login-form组件 结束-->
+  </div>
+  <!--登录界面结束-->
+  <!--微信扫描开始-->
+  <div class="login_con" [style.display]="loginFrom?'none':'block'">
+    <div class="platform_name wechat_pad">欢迎使用微信登录</div>
+    <div class="code"></div>
+    <button (click)="backLogin()" nz-button class="login-form-button wechat_but" [nzType]="'primary'">返回</button>
+  </div>
+  <!--微信扫描结束-->
+  <div class="login_footer">
+    <span>企业无限云 © 2018 杭州全维技术股份有限公司 版权所有</span>
+  </div>
+</div>

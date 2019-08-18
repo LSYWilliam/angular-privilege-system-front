@@ -1,0 +1,67 @@
+<nz-layout>
+    <nz-sider class="left-bar"
+              style="width: 170px;">
+        <div nz-col [nzSpan]="24" class="card_title_18_bold top-role" style="padding-left: 24px;">
+            角色管理
+            <i class="add">+</i>
+        </div>
+        <ul nz-col [nzSpan]="24" nz-menu [nzMode]="'inline'" nzTheme="dark"
+            style="background-color: #eaedf1;color:#000000;">
+            <li nz-menu-item nz-tooltip nzPlacement="right" (mouseover)="mouseover(creator.value)"
+                (mouseout)="mouseout(creator.value)">
+                <input #creator value="0" hidden>
+                <span title style="color:#000000;">
+                    <span>项目创建人</span>
+                </span>
+                <span class="del" [ngClass]="{none:isShow[0]}" style="font-size: 10px;">&#10005;</span>
+            </li>
+            <li nz-menu-item nz-tooltip nzPlacement="right" (mouseover)="mouseover(manager.value)"
+                (mouseout)="mouseout(manager.value)">
+                <input #manager value="1" hidden>
+                <span title style="color:#000000;">
+                    <span>项目管理员</span>
+                </span>
+                <span class="del" [ngClass]="{none:isShow[1]}" style="font-size: 10px;">&#10005;</span>
+            </li>
+            <li nz-menu-item nz-tooltip nzPlacement="right" *ngFor="let item of roleList;let i = index"
+                (mouseover)="mouseover(i+2)" (mouseout)="mouseout(i+2)">
+                <span title>
+                    <span>{{item.name}}</span>
+                </span>
+                <span class="del" [ngClass]="{none:isShow[i+2]}" style="font-size: 10px;">&#10005;</span>
+            </li>
+        </ul>
+    </nz-sider>
+    <nz-content class="right-list">
+        <div nz-col [nzSpan]="24" style="padding:10px 0px;margin-bottom: 15px;margin-top: 10px;">
+            <span class="top-button" [ngClass]="{clicked:isClicked}">数据接入</span>
+            <span class="top-button">数据处理</span>
+        </div>
+        <nz-divider></nz-divider>
+        <div nz-col [nzSpan]="24">
+            <nz-tree [nzData]="nodes">
+                <ng-template #nzTreeTemplate let-node>
+                    <!--<div nz-col [nzSpan]="2">-->
+                    <span class="custom-node" [class.active]="activedNode?.key===node.key">
+                        <span>
+                            <i nz-icon nzType="down" nzTheme="outline"></i>
+                            <!--<i nz-icon [type]="node.isExpanded ? 'folder-open' : 'folder'" (click)="openFolder(node)"></i>-->
+                            <span class="folder-name">{{node.title}}</span>
+                            <span class="folder-desc">created by {{node?.origin?.author | lowercase}}</span>
+                        </span>
+                        <!--<span *ngIf="node.isLeaf" (contextmenu)="contextMenu($event,contextTemplate)">-->
+                        <!--<i nz-icon type="file"></i>-->
+                        <!--<span class="file-name">{{node.title}}</span>-->
+                        <!--<span class="file-desc">modified by {{node?.origin?.author | lowercase}}</span>-->
+                        <!--</span>-->
+                    </span>
+                    <!--</div>-->
+                    <!--<div nz-col [nzSpan]="2" [nzOffset]="20">-->
+                    <button nz-button nzType="primary" class="right-button">编辑</button>
+                    <button nz-button nzType="primary" class="right-button">查看</button>
+                    <!--</div>-->
+                </ng-template>
+            </nz-tree>
+        </div>
+    </nz-content>
+</nz-layout>

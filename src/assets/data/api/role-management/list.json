@@ -1,0 +1,21 @@
+{
+    "code": 0,
+    "msg": "操作成功",
+    "result": [
+        {
+            "id": "1",
+            "content": "icon-project",
+            "name": "项目管理"
+        },
+        {
+            "id": "2",
+            "content": "icon-project",
+            "name": "团队管理"
+        },
+        {
+            "id": "3",
+            "content": "icon-project",
+            "name": "角色管理"
+        }
+    ]
+}

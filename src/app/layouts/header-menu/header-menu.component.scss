@@ -1,0 +1,63 @@
+@import "../../../base";
+li a{
+  color: #fff;
+  text-decoration:none;
+}
+/**头部导航样式 开始*/
+/* _bg */
+:host ::ng-deep .ant-layout-header{
+  height: 40px!important;
+  line-height: 40px!important;
+  padding-left: 5px!important;
+  padding-right: 5px!important;
+  background: #0a1d49;
+  background-size: cover!important;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.2)!important;
+  -moz-box-shadow:0px 5px 10px rgba(0,0,0,0.2)!important;
+  -webkit-box-shadow:0px 5px 10px rgba(0,0,0,0.2)!important;
+  position: relative;
+  z-index: 999;
+}
+
+
+.ant-menu{
+  color:#666;
+  background: #071C47;
+}
+.ant-menu a{
+  color:#666;
+
+}
+.active, .activation {
+  //background: #50699b!important;
+  color: rgb(0, 193, 221) !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: #071C47;
+}
+.ant-menu-horizontal > .ant-menu-item > a, .ant-menu-horizontal > .ant-menu-submenu > a{
+  color:#ffffff;
+  font-weight: bold;
+  font-size: 14px;
+}
+/**头部导航样式 结束*/
+
+
+:host ::ng-deep .ant-menu-horizontal {
+  background: #071C47;
+  color: #ffffff;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: none;
+}
+:host ::ng-deep .ant-menu-horizontal > .ant-menu-item:hover, :host ::ng-deep .ant-menu-horizontal > .ant-menu-item-selected{
+  border-bottom: none;
+  color: #ffffff;
+  background: rgb(25, 29, 33);
+}
+
+:host ::ng-deep .ant-menu-horizontal > .ant-menu-item {
+  border: none;
+}
+

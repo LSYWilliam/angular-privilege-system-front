@@ -1,0 +1,59 @@
+<div class="login_bg">
+  <div class="login_con">
+    <div class="login_logo"></div>
+    <div class="platform_name">欢迎登录数据计算平台</div>
+    <!--注册表单 开始-->
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control>
+          <input type="text" nz-input formControlName="userName" placeholder="请设置您的用户名"/>
+          <nz-form-explain *ngIf="validateForm.get('userName')?.dirty && validateForm.get('userName')?.errors">
+            The input is not valid E-mail!
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <input type="text" nz-input formControlName="userName" placeholder="请设置您的密码"/>
+          <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors">
+            The input is not valid E-mail!
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <input type="text" nz-input formControlName="userName" placeholder="请再次输入您的密码"/>
+          <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors">
+            The input is not valid E-mail!
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <input type="text" nz-input formControlName="userName" placeholder="请输入您的手机号码"/>
+          <button class="captcha" nz-button (click)="getCaptcha($event)">发送验证码</button>
+          <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors">
+            The input is not valid E-mail!
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+              <input type="text" nz-input formControlName="userName" placeholder="请输入验证码"/>
+          <nz-form-explain *ngIf="validateForm.get('captcha')?.dirty && validateForm.get('captcha')?.errors"
+          >Please input the captcha you got!</nz-form-explain
+          >
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button class="login-form-button" [nzType]="'primary'">注册</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <!--注册表单 结束-->
+  </div>
+  <div class="login_footer">
+    <span>企业无限云 © 2018 杭州全维技术股份有限公司 版权所有</span>
+  </div>
+</div>

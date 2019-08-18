@@ -1,0 +1,35 @@
+<div style="margin: 20px;">
+    <app-form-title [formTitle]="'我的title'"></app-form-title>
+</div>
+
+<div style="margin: 20px;">
+    <app-use-model [useModel]="useModel"></app-use-model>
+</div>
+
+<div style="margin: 20px;">
+    <app-city-link  [threeLinkData]="threeLinkData "
+                    [provinceLink]="'江苏省'"
+                    [cityLink]="'南京市'"
+                    [areaLink]="'建邺区'"
+                    [addressLink]="'君泰国际'"
+                    [ifAddress]="false"
+                    (outData)="outData($event)">
+    </app-city-link>
+    <!-- ifAddress默认为true， 显示详细地址 -->
+</div>
+
+<div style="margin: 20px;">
+    <app-ps-table [loading]="loading"
+                  [dataSet]="listOfData"
+                  [isCheckBox]="true"
+                  [headered]="headered.headered"
+                  [pageIndex]="1"
+                  [pageSize]="10"
+                  [total]="200"
+                  (pageIndexEvent)="pageIndexEvent($event)"
+                  (pageSizeEvent)="pageSizeEvent($event)"
+                  (pageSortEvent)="pageSortEvent($event)"
+                  (searchEvent)="searchEvent($event)"
+                  (updateFilterEvent)="updateFilterEvent($event)"></app-ps-table>
+</div>
+

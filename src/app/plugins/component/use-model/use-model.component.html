@@ -1,0 +1,8 @@
+<div class="use-model-box">
+  <div *ngFor="let item of useModel; let key = index"
+       class="ps-child"
+       [ngClass]="{'ps-bg-true': (item.select === true), 'ps-bg-false': (item.select === false)}"
+       (click)="toggleSelect(key, item)">
+    {{item.name}}
+  </div>
+</div>

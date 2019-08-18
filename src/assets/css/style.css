@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ou3484');
+  src:  url('fonts/icomoon.eot?ou3484#iefix') format('embedded-opentype'),
+  url('fonts/icomoon.ttf?ou3484') format('truetype'),
+  url('fonts/icomoon.woff?ou3484') format('woff'),
+  url('fonts/icomoon.svg?ou3484#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wechat:before {
+  content: "\e90a";
+}
+.icon-editPen:before {
+  content: "\e900";
+}
+.icon-exit:before {
+  content: "\e901";
+}
+.icon-explain:before {
+  content: "\e902";
+}
+.icon-firstSet:before {
+  content: "\e903";
+}
+.icon-passwordDisplay:before {
+  content: "\e904";
+}
+.icon-passwordHide:before {
+  content: "\e905";
+}
+.icon-project:before {
+  content: "\e906";
+}
+.icon-projectMembers:before {
+  content: "\e907";
+}
+.icon-role:before {
+  content: "\e908";
+}
+.icon-team:before {
+  content: "\e909";
+}

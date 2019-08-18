@@ -1,0 +1,33 @@
+<nz-layout class="layout">
+    <!--头部组件-->
+    <app-header-layout></app-header-layout>
+    <!--导航组件-->
+    <nz-layout style="background: #d9dfe5;">
+        <!--导航内容组件-->
+        <nz-sider class="nav_listCon" [nzWidth]="150"
+                  nzCollapsible [(nzCollapsed)]="isCollapsed" [nzCollapsedWidth]="50"
+                  (mouseover)="mouseover()" (mouseout)="mouseout()" [nzTrigger]="null"
+                  style="overflow: auto; height: 100vh; position: fixed; left: 0;background-color: #3f454a;z-index:999">
+            <div style="height:100%;background-color: rgb(37, 42, 46)">
+                <ul nz-menu style="background-color: rgb(37, 42, 46)"
+                >
+                    <li *ngFor="let item of leftMenuList; let idx = index;" nz-menu-item
+                        [ngClass]="{'activation ant-menu-item-selected': routeNav === item.url }" class="header-title"
+                        style="width: 183px;"
+                    >
+                        <a (click)="routeToLink(item.url)" style="text-align: left;text-decoration:none;">
+                            <span title><i [ngClass]="item.icon"></i></span><span style="padding-left:17px;">{{item.name}}</span>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+        </nz-sider>
+
+        <nz-layout class="layout_content" style="margin-left: 50px;">
+            <router-outlet></router-outlet>
+        </nz-layout>
+
+    </nz-layout>
+</nz-layout>
+

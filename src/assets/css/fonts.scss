@@ -1,0 +1,27 @@
+/**ALL FONTS**/
+
+/*字体变量：高/行高(默认行高等于高)/字体大小/颜色/是否加粗*/
+@mixin font_style($height,$size:14px,$color:#333,$weight:normal){
+  height:$height;
+  line-height: $height;
+  color: $color;
+  font:{
+    size: $size;
+    weight: $weight;
+  }
+}
+
+/*login页面*/
+/*login标题*/
+.platform_name{
+  @include font_style(70px,24px);
+  text-align: center;
+}
+/*登录login_footer底部文字样式*/
+.login_footer span{
+  @include font_style(120px,14px,#fff);
+  display:block;
+}
+.font_common{
+  @include font_style(30px,14px);
+}

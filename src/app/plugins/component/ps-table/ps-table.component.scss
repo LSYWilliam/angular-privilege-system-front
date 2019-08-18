@@ -1,0 +1,40 @@
+.search-box {
+    padding: 8px;
+}
+
+.search-box input {
+    width: 188px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.search-box button {
+    width: 90px;
+}
+
+.search-button {
+    margin-right: 8px;
+}
+
+:host ::ng-deep .ant-table-filter-dropdown {
+    margin-left: -70px;
+}
+
+.cancel-bubbling {
+    margin-left: -22px;
+    margin-bottom: 0;
+}
+
+/* 表格样式 */
+
+nz-table {
+    border: 1px solid #e8e8e8;
+}
+
+:host ::ng-deep .ant-table-tbody>tr>td {
+    border-bottom: 0;
+}
+
+:host ::ng-deep .ant-table table {
+    border-bottom: 1px solid #e8e8e8;
+}

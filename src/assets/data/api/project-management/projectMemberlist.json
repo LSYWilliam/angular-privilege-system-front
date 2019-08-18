@@ -1,0 +1,29 @@
+{
+    "code": 0,
+    "msg": "操作成功",
+    "result": [
+        {
+            "id": "0",
+            "memberName": "icon-project0",
+            "memberList": ["开发","读者","归属"],
+            "registerTime": "2018-08-12 12:12:12"
+        },{
+            "id": "1",
+            "memberName": "admin",
+            "memberList": ["项目拥有者"],
+            "registerTime": "2018-08-12 12:12:12"
+        },
+        {
+            "id": "2",
+            "memberName": "icon-project1",
+            "memberList": ["开发","读者","归属"],
+            "registerTime": "2018-08-12 12:12:12"
+        },
+        {
+            "id": "3",
+            "memberName": "icon-project2",
+            "memberList": ["开发","读者"],
+            "registerTime": "2018-08-12 12:12:12"
+        }
+    ]
+}

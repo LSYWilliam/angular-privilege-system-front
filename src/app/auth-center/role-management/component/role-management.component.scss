@@ -1,0 +1,60 @@
+@import "../../../../assets/css/colors";
+@import "../../../../base";
+
+.left-bar{
+  background-color: #d9dee4;
+}
+.left-bar ul {
+  background-color: $gray_2;
+}
+.left-bar ul li:hover{
+  background-color: #049b04;
+}
+.right-list{
+  background-color: #ffffff;
+  padding: 25px;
+}
+
+.top-role{
+  padding: 10px 0px;
+  height: 50px;
+  line-height:30px;
+  background-color: $gray_3;
+}
+span{
+  color: $font_color;
+}
+
+.none{
+  display: none;
+}
+
+.del{
+  color: #d9dee4;
+}
+
+.add,.del{
+  position: relative;
+  left: 40px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.top-button{
+  color: $font_color;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+}
+
+.top-button:hover,.top-button.clicked{
+  border-radius:60px;
+  color: #ffffff;
+  background-color: #0099cc;
+  padding: 10px;
+}
+
+.right-button{
+  position: relative;
+  right: 100px;
+}

@@ -1,0 +1,31 @@
+{
+    "code":0,
+    "msg":"操作成功",
+    "result":[
+      {
+        "url":"auth-center/project-management",
+        "icon":"icon-project",
+        "name":"项目管理"
+      },{
+        "url":"auth-center/team-management",
+        "icon":"icon-team",
+        "name":"团队管理"
+      },{
+        "url":"auth-center/role-management",
+        "icon":"icon-role",
+        "name":"角色管理"
+      },{
+        "url":"auth-center/default-config",
+        "icon":"icon-firstSet",
+        "name":"默认配置"
+      },{
+        "url":"auth-center/user-management",
+        "icon":"icon-team",
+        "name":"用户管理"
+      },{
+        "url":"auth-center/project-list",
+        "icon":"icon-project",
+        "name":"项目列表"
+      }
+    ]
+}

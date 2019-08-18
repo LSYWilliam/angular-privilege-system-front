@@ -1,0 +1,141 @@
+<div nz-col [nzSpan]="24">
+    <div nz-col [nzSpan]="2" [nzOffset]="11">团队成员</div>
+</div>
+<nz-divider></nz-divider>
+<div nz-col [nzSpan]="24">成员列表</div>
+<nz-list
+        class="demo-loadmore-list"
+        [nzDataSource]="memberItemList"
+        [nzItemLayout]="'horizontal'"
+        [nzLoading]="initLoading"
+        [nzRenderItem]="memberLtem"
+>
+    <ng-template #memberLtem let-item>
+        <nz-list-item
+                [nzActions]="[rightMemeberChosen]"
+        >
+            <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
+                <ng-template #rightMemeberChosen>
+                    <div nz-col [nzSpan]="24">
+                        <div>
+                            <i class="icon-cha-tianchong"></i>
+                        </div>
+                        <div>
+                            <span *ngIf="isSaveFlag[item.id]">{{item.memberListString}}</span>
+                            <nz-select *ngIf="!isSaveFlag[item.id]"
+                                       [nzMaxTagCount]="3"
+                                       [nzMaxTagPlaceholder]="tagPlaceHolder"
+                                       style="width: 100px;"
+                                       nzMode="multiple"
+                                       nzPlaceHolder="Please select"
+                                       [(ngModel)]="item.memberList"
+                            >
+                                <nz-option *ngFor="let option of roleLabelList" [nzLabel]="option.label"
+                                           [nzValue]="option.value"></nz-option>
+                            </nz-select>
+                            <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected
+                            </ng-template>
+                            <a *ngIf="isSaveFlag[item.id]" (click)="editMenmberRole(item)"> 编辑</a>
+                            <a *ngIf="!isSaveFlag[item.id]" (click)="saveMenmberRole(item)">保存</a>
+                        </div>
+                    </div>
+                </ng-template>
+                <nz-list-item-meta
+                        [nzTitle]="nzProjectTitle"
+                        [nzDescription]="item.registerTime"
+                >
+                    <ng-template #nzProjectTitle>
+                        <span>{{ item.memberName }}</span>
+                    </ng-template>
+                </nz-list-item-meta>
+            </nz-skeleton>
+        </nz-list-item>
+    </ng-template>
+    <ng-template #loadMore>
+        <div class="loadmore">
+            <button nz-button *ngIf="!loadingMore" (click)="onLoadMore()">loading more</button>
+        </div>
+    </ng-template>
+</nz-list>
+
+<nz-divider></nz-divider>
+<div nz-col [nzSpan]="24">添加成员</div>
+<div nz-col [nzSpan]="24">
+    <form nz-form [formGroup]="validateAddMemberByEmailForm" (ngSubmit)="submitAddMemberByEmailForm()">
+        <div nz-col [nzSpan]="24">
+            <div class="child-flex-name">
+                <span class="font-style">发送邮件邀请</span>
+            </div>
+        </div>
+        <nz-form-item *ngFor="let control of emailControlArray; let i = index">
+            <nz-form-control [nzSpan]="3" [nzOffset]="6">
+                <nz-select
+                        [attr.id]="control.id"
+                        [formControlName]="control.controlInstance">
+                    <nz-option nzValue="male" nzLabel="male"></nz-option>
+                    <nz-option nzValue="female" nzLabel="female"></nz-option>
+                </nz-select>
+                <!--<input nz-input id="type" formControlName="type">-->
+                <nz-form-explain
+                        *ngIf="validateAddMemberByEmailForm.get('type')?.dirty && validateAddMemberByEmailForm.get('type')?.errors">
+                    请输入合法的项目类型!
+                </nz-form-explain>
+            </nz-form-control>
+            <nz-form-control [nzSpan]="1">
+                <div class="child-flex-name">
+                    <span class="iconfont icon-style-red">&#xe61e;</span>
+                    <span class="font-style">角色</span>
+                </div>
+            </nz-form-control>
+            <nz-form-control [nzSpan]="3">
+                <nz-select
+                        [attr.id]="control.id2"
+                        [formControlName]="control.controlInstance2">
+                    <nz-option nzValue="male" nzLabel="male"></nz-option>
+                    <nz-option nzValue="female" nzLabel="female"></nz-option>
+                </nz-select>
+                <!--<input nz-input id="type" formControlName="type">-->
+                <nz-form-explain
+                        *ngIf="validateAddMemberByEmailForm.get('type')?.dirty && validateAddMemberByEmailForm.get('type')?.errors">
+                    请输入合法的项目类型!
+                </nz-form-explain>
+            </nz-form-control>
+            <nz-form-control [nzSpan]="1">
+                <div class="child-flex-name">
+                    <span class="iconfont icon-style-red">&#xe61e;</span>
+                    <span class="font-style">项目</span>
+                </div>
+            </nz-form-control>
+            <nz-form-control [nzSpan]="3">
+                <nz-select
+                        [attr.id]="control.id2"
+                        [formControlName]="control.controlInstance2">
+                    <nz-option nzValue="male" nzLabel="male"></nz-option>
+                    <nz-option nzValue="female" nzLabel="female"></nz-option>
+                </nz-select>
+                <!--<input nz-input id="type" formControlName="type">-->
+                <nz-form-explain
+                        *ngIf="validateAddMemberByEmailForm.get('type')?.dirty && validateAddMemberByEmailForm.get('type')?.errors">
+                    请输入合法的项目类型!
+                </nz-form-explain>
+            </nz-form-control>
+            <div nz-col [nzSpan]="1">
+                <button nz-button nzType="primary" (click)="deleteEmailControlArrayItem(control.id)">删除</button>
+            </div>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control [nzSpan]="20" [nzOffset]="6">
+                <button nz-button nzType="dashed" style="width:60%" (click)="addMemberByEmailField($event)">
+                    <i nz-icon type="plus"></i> Add field
+                </button>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item style="margin-bottom:8px;">
+            <div nz-col style="text-align: center">
+                <button nz-button nzType="primary" [disabled]="!validateAddMemberByEmailForm.valid">发送</button>
+                <button nz-button (click)="resetForm($event)">取消</button>
+            </div>
+        </nz-form-item>
+    </form>
+</div>
+<nz-divider></nz-divider>

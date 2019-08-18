@@ -1,0 +1,88 @@
+<div class="ps-dc-title">
+    默认配置
+</div>
+
+<div class="ps-dc-box">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzFor="registered">
+                <app-form-title [formTitle]="formTitle[0]"></app-form-title>
+            </nz-form-label>
+            <nz-form-control [nzSpan]="24">
+                <nz-select id="registered"
+                           [(ngModel)]="defaultConfigData.registered"
+                           nzAllowClear
+                           nzPlaceHolder="请选择是否开放项目"
+                           formControlName="registered">
+                    <nz-option *ngFor="let item of noRegistered" [nzValue]="item.value" [nzLabel]="item.label"></nz-option>
+                </nz-select>
+                <nz-form-explain *ngIf="validateForm.get('registered')?.dirty && validateForm.get('registered')?.errors">
+                    请选择是否开放项目!
+                </nz-form-explain>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzFor="project">
+                <app-form-title [formTitle]="formTitle[1]"></app-form-title>
+            </nz-form-label>
+            <nz-form-control [nzSpan]="24">
+                <input nz-input id="project" nzPlaceHolder="请输入可建项目" [(ngModel)]="defaultConfigData.project" formControlName="project" />
+                <nz-form-explain *ngIf="validateForm.get('project')?.dirty && validateForm.get('project')?.errors"
+                >请输入可建项目!</nz-form-explain
+                >
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzFor="invitableMember">
+                <app-form-title [formTitle]="formTitle[2]"></app-form-title>
+            </nz-form-label>
+            <nz-form-control [nzSpan]="24">
+                <input nz-input id="invitableMember" nzPlaceHolder="请输入可邀成员" [(ngModel)]="defaultConfigData.invitableMember" formControlName="invitableMember" />
+                <nz-form-explain *ngIf="validateForm.get('invitableMember')?.dirty && validateForm.get('invitableMember')?.errors"
+                >请输入可邀成员!</nz-form-explain
+                >
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzFor="validityPeriod">
+                <app-form-title [formTitle]="formTitle[3]"></app-form-title>
+            </nz-form-label>
+            <nz-form-control [nzSpan]="24">
+                <nz-input-group class="child-flex-item" [nzSuffix]="suffixIconSearch">
+                    <input nz-input id="validityPeriod" nzPlaceHolder="请输入项目有效期" [(ngModel)]="defaultConfigData.validityPeriod" formControlName="validityPeriod">
+                </nz-input-group>
+                <ng-template #suffixIconSearch>
+                    <span class="add-font">天</span>
+                </ng-template>
+                <nz-form-explain *ngIf="validateForm.get('validityPeriod')?.dirty && validateForm.get('validityPeriod')?.errors"
+                >请输入项目有效期!</nz-form-explain
+                >
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzFor="moduleAvailable">
+                <app-form-title [formTitle]="formTitle[4]"></app-form-title>
+            </nz-form-label>
+            <nz-form-control [nzSpan]="24">
+                <app-use-model [(useModel)]="defaultConfigData.moduleAvailable"></app-use-model>
+                <!--<input nz-input id="moduleAvailable" [(ngModel)]="defaultConfigData.moduleAvailable" formControlName="moduleAvailable">-->
+                <!--<nz-form-explain *ngIf="validateForm.get('moduleAvailable')?.dirty && validateForm.get('moduleAvailable')?.errors">-->
+                    <!--请选择可使用模块!-->
+                <!--</nz-form-explain>-->
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item nz-row style="margin-top: 20px; margin-bottom: 40px;">
+            <nz-form-control [nzSpan]="3" [nzOffset]="7">
+                <button nz-button nzType="primary">保存</button>
+            </nz-form-control>
+            <nz-form-control [nzSpan]="7" [nzOffset]="3">
+                <button nz-button nzType="default">取消</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</div>

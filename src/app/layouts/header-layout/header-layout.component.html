@@ -1,0 +1,99 @@
+<div class="box_shadow" style="background-color: rgb(37, 42, 47);">
+    <nz-header>
+        <div nz-row>
+            <div nz-col [nzSpan]="4" class="my_logo">
+            <span class="system_name">
+                <i class="icon-logo"></i>
+                <span>数据计算平台</span>
+            </span>
+            </div>
+            <div nz-col [nzSpan]="14">
+                <app-header-menu></app-header-menu>
+            </div>
+
+            <div nz-col [nzSpan]="6" class="users text_right">
+                <span>{{userName}}</span>
+                <nz-dropdown [nzPlacement]="'bottomRight'">
+                    <a nz-dropdown>
+                        Hover me <i nz-icon type="down"></i>
+                    </a>
+                    <ul nz-menu>
+                        <li>
+                            <div class="topbar-user-header"><h3>
+                                <span title="信陵悦" class="topbar-user-email">平台管理员</span></h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="topbar-user-body">
+                                <span>基本信息</span>
+                                <p>地域：</p>
+                                <p>电话：</p>
+                                <p>邮箱：</p>
+                                <span>项目信息</span>
+                                <p>到期时间：</p>
+                                <p>已建/可建项目：</p>
+                                <p>已邀/可邀成员：</p>
+                            </div>
+                        </li>
+                        <li nz-menu-item>
+                            <div class="topbar-user-footer">
+                                <a target="_self" rel="noopener noreferrer" style="text-decoration:none;" (click)="routeToLink()">基本资料</a></div>
+                        </li>
+                    </ul>
+                    <!--<div class="topbar-info-dropdown-memu topbar-info-dropdown-memu-list">-->
+                    <!--<div class="topbar-user-header"><h3>-->
+                    <!--<span title="信陵悦" class="topbar-user-email">平台管理员</span></h3>-->
+                    <!--</div>-->
+                    <!--<div class="topbar-user-body">-->
+                    <!--<span>基本信息</span>-->
+                    <!--<p>地域：</p>-->
+                    <!--<p>电话：</p>-->
+                    <!--<p>邮箱：</p>-->
+                    <!--<span>项目信息</span>-->
+                    <!--<p>到期时间：</p>-->
+                    <!--<p>已建/可建项目：</p>-->
+                    <!--<p>已邀/可邀成员：</p>-->
+                    <!--</div>-->
+                    <!--<div class="topbar-user-footer">-->
+                    <!--<a href="baseInfo" target="_self" rel="noopener noreferrer">基本资料</a></div></div>-->
+                </nz-dropdown>
+                <!--<ul nz-menu [nzMode]="'horizontal'">-->
+                <!--<li nz-submenu>-->
+                <!--<span title>平台管理员</span>-->
+                <!--<ul>-->
+                <!--<li nz-menu-group>-->
+                <!--<h3><span title="信陵悦" class="topbar-user-email">平台管理员</span></h3>-->
+                <!--</li>-->
+                <!--<li nz-menu-group>-->
+                <!--<div class="topbar-user-body">-->
+                <!--<p>基本信息</p>-->
+                <!--<p>地域：</p>-->
+                <!--<p>电话：</p>-->
+                <!--<p>邮箱：</p>-->
+                <!--<p>项目信息</p>-->
+                <!--<p>到期时间：</p>-->
+                <!--<p>已建/可建项目：</p>-->
+                <!--<p>已邀/可邀成员：</p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li nz-menu-group>-->
+                <!--<a href="baseInfo" target="_self" rel="noopener noreferrer">基本资料</a>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--<span>|</span>-->
+                <span title="退出" class="quit">
+              <i class="icon-PFAexit2" (click)="logOut()"></i>
+            </span>
+            </div>
+        </div>
+    </nz-header>
+</div>
+
+<nz-modal [nzVisible]="isVisible" [nzTitle]="'退出'" [nzContent]="logOutContent" (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk()">
+    <ng-template #logOutContent>
+        <p>确定需要退出？</p>
+    </ng-template>
+</nz-modal>

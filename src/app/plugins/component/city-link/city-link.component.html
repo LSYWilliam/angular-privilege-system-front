@@ -1,0 +1,91 @@
+<div class="city-box">
+  <nz-select
+    class="provinces-city-area"
+    [nzPlaceHolder]="'省'"
+    [(ngModel)]="valueProvinces"
+    [nzShowSearch]="true"
+    (ngModelChange)="provinceSearch($event)">
+    <nz-option
+      *ngFor="let option of searchOptionsProvinces"
+      [nzLabel]="option.name"
+      [nzValue]="option"
+      [nzDisabled]="option.disabled">
+    </nz-option>
+  </nz-select>
+  <div class="city-interval"></div>
+  <nz-select
+    class="provinces-city-area"
+    [nzPlaceHolder]="'市'"
+    [(ngModel)]="valueCities"
+    [nzShowSearch]="true"
+    (ngModelChange)="citiesSearch($event)">
+    <nz-option
+      *ngFor="let option of selectedOptionCities"
+      [nzLabel]="option.name"
+      [nzValue]="option"
+      [nzDisabled]="option.disabled">
+    </nz-option>
+  </nz-select>
+  <div class="city-interval"></div>
+  <nz-select
+    class="provinces-city-area"
+    [nzPlaceHolder]="'区'"
+    [(ngModel)]="valueAreas"
+    [nzShowSearch]="true"
+    (ngModelChange)="areaSearch()">
+    <nz-option
+      *ngFor="let option of selectedOptionAreas"
+      [nzLabel]="option.name"
+      [nzValue]="option"
+      [nzDisabled]="option.disabled">
+    </nz-option>
+  </nz-select>
+</div>
+
+<div class="detailed-city-box" *ngIf="ifAddress=== false ? false: true">
+  <input nz-input
+         placeholder="详细地址"
+         [(ngModel)]="addressLink"
+         (ngModelChange)="addressDetails()">
+</div>
+
+
+<!--<nz-select-->
+  <!--style="width: 85px;"-->
+  <!--[nzPlaceHolder]="'省'"-->
+  <!--[(ngModel)]="valueProvinces"-->
+  <!--[nzShowSearch]="true"-->
+  <!--(ngModelChange)="provinceSearch()">-->
+  <!--<nz-option-->
+    <!--*ngFor="let option of searchOptionsProvinces"-->
+    <!--[nzLabel]="option.name"-->
+    <!--[nzValue]="option"-->
+    <!--[nzDisabled]="option.disabled">-->
+  <!--</nz-option>-->
+<!--</nz-select>-->
+<!--<nz-select-->
+  <!--style="width: 85px;margin-left:2px;"-->
+  <!--[nzPlaceHolder]="'市'"-->
+  <!--[(ngModel)]="valueCities"-->
+  <!--[nzShowSearch]="true"-->
+  <!--(ngModelChange)="citiesSearch()">-->
+  <!--<nz-option-->
+    <!--*ngFor="let option of selectedOptionCities"-->
+    <!--[nzLabel]="option.name"-->
+    <!--[nzValue]="option"-->
+    <!--[nzDisabled]="option.disabled">-->
+  <!--</nz-option>-->
+<!--</nz-select>-->
+<!--<nz-select-->
+  <!--style="width: 85px; margin-left:2px;"-->
+  <!--[nzPlaceHolder]="'区'"-->
+  <!--[(ngModel)]="valueAreas"-->
+  <!--[nzShowSearch]="true"-->
+  <!--(ngModelChange)="areaSearch()">-->
+  <!--<nz-option-->
+    <!--*ngFor="let option of selectedOptionAreas"-->
+    <!--[nzLabel]="option.name"-->
+    <!--[nzValue]="option"-->
+    <!--[nzDisabled]="option.disabled">-->
+  <!--</nz-option>-->
+<!--</nz-select>-->

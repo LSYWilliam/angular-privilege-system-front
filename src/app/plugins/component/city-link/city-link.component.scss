@@ -1,0 +1,27 @@
+//:host ::ng-deep .ant-btn {
+//  border: none!important;
+//  padding: 0;
+//}
+//
+//.drop_con {
+//  height: 175px;
+//  overflow-y: auto;
+//}
+
+.city-box {
+  display: flex;
+}
+
+.detailed-city-box {
+  display: flex;
+  margin-top: 5px;
+}
+
+.provinces-city-area {
+  flex: 1;
+}
+
+.city-interval {
+  margin-left: 10px;
+  margin-right: 10px;
+}

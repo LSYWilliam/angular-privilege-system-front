@@ -1,0 +1,83 @@
+<!--
+    nz-zorro表格使用方法介绍
+    1、  nzLoading 页面是否加载中
+    2、  nzData 数据数组
+    3、  nzTotal 当前总数据，在服务器渲染时需要传入
+    4、  nzPageIndex 当前页码，可双向绑定
+    5、  nzPageSize 每页展示多少数据，可双向绑定
+    6、  [nzShowSort] 是否显示排序
+    7、  nzSingleSort 是否单列排序模式，非受控排序下使用
+    8、  (nzSortChange) 排序改变时的回调函数，需要与 th 上的 nzSortKey 同时使用，非受控排序下使用
+    9、  nzShowFilter 是否显示过滤
+    10、 [nzFilters] 过滤器内容, 显示数据 text，回调函数传出 value，设置 byDefault 以默认应用过滤规则
+    11、 (nzFilterChange) 过滤器内容选择的 value 数据回调
+    12、 [nzShowSizeChanger] 是否可以改变 nzPageSize， 默认false
+    13、 [nzFrontPagination]	 是否在前端对数据进行分页，如果在服务器分页数据或者需要在前端显示全部数据时传入false
+    14、 (nzPageIndexChange) 当前页码改变时的回调函数
+    15、 (nzPageSizeChange) 页数改变时的回调函数
+-->
+
+<nz-table
+    #ajaxTable
+    nzShowSizeChanger
+    [nzFrontPagination]="false"
+    [nzData]="dataSet"
+    [nzLoading]="loading"
+    [nzTotal]="total"
+    [(nzPageIndex)]="pageIndex"
+    [(nzPageSize)]="pageSize"
+    [nzPageSizeOptions]="[ 5, 10, 20, 30, 40, 50 ]"
+    (nzCurrentPageDataChange)="currentPageDataChange($event)"
+    (nzPageIndexChange)="indexChange()"
+    (nzPageSizeChange)="sizeChange(true)">
+    <thead (nzSortChange)="sort($event)" nzSingleSort>
+    <tr>
+        <th *ngIf="isCheckBox"
+            nzShowCheckbox
+            [(nzChecked)]="isAllDisplayDataChecked"
+            [nzIndeterminate]="isIndeterminate"
+            (nzCheckedChange)="checkAll($event)"></th>
+        <th *ngFor="let header of headered"
+            [nzShowFilter]="header.filter"
+            [nzShowSort]="header.sort"
+            nzCustomFilter
+            [nzSortKey]="header.field"
+            [nzFilters]="header.filterText"
+            (nzFilterChange)="updateFilter($event)">
+            <nz-dropdown *ngIf="header.search" nzTrigger="click" nzPlacement="bottomRight" [nzClickHide]="false" nzTableFilter #dropdown>
+                <i  nz-icon
+                    nzType="search"
+                    class="ant-table-filter-icon"
+                    [ngStyle]="{'right': setIconRight(header)}"
+                    [class.ant-table-filter-open]="dropdown.nzVisible"
+                    nz-dropdown></i>
+                <div class="search-box">
+                    <input type="text" nz-input placeholder="请输入..." [(ngModel)]="searchValue" />
+                    <button nz-button nzSize="small" nzType="primary" (click)="search(header.field)" class="search-button">
+                        搜索
+                    </button>
+                    <button nz-button nzSize="small" (click)="reset()">重置</button>
+                </div>
+            </nz-dropdown>
+            <span>{{header.headName}}</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of ajaxTable.data">
+        <td *ngIf="isCheckBox"
+            nzShowCheckbox
+            [(nzChecked)]="mapOfCheckedId[data.id]"
+            (nzCheckedChange)="refreshStatus()"></td>
+        <td *ngFor="let header of headered">
+            <a *ngIf="header.mouse" nz-popover nzTitle="" [nzContent]="contentTemplate" nzPlacement="right">{{ data[header.field][0] }}...</a>
+            <ng-template #contentTemplate>
+                <ul class="cancel-bubbling">
+                    <li *ngFor="let useMd of data[header.field]">{{useMd}}</li>
+                </ul>
+            </ng-template>
+            <span *ngIf="!header.mouse">{{ data[header.field] }}</span>
+        </td>
+    </tr>
+    </tbody>
+</nz-table>

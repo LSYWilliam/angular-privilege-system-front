@@ -1,0 +1,10 @@
+
+<ul nz-menu [nzMode]="'horizontal'" >
+  <li *ngFor="let item of menuList; let idx = index;"  nz-menu-item
+      [ngClass]="{'activation ant-menu-item-selected': routeNav === item.url }"
+  >
+    <a (click)="routeToLink(item.url)" style="">
+      <span title >{{item.name}}</span>
+    </a>
+  </li>
+</ul>

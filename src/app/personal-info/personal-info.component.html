@@ -1,0 +1,80 @@
+<div>
+    <div nz-row>
+        <div nz-col nzSpan="24">基本资料</div>
+        <div nz-col nzSpan="24">
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                <nz-form-item>
+                    <div nz-col [nzSm]="{ span: 6, offset: 8 }" [nzXs]="{ span: 24 }">
+                        <div class="child-flex-name">
+                            <span class="iconfont icon-style-red">&#xe61e;</span>
+                            <span class="font-style">电话</span>
+                        </div>
+                    </div>
+                    <nz-form-control [nzSm]="{ span: 6, offset: 8 }" [nzXs]="{ span: 24 }">
+                        <!--<nz-input-number style="width:100%;" formControlName="phone" id="phone"  [nzStep]="1"></nz-input-number>-->
+                        <input nz-input formControlName="phone" id="phone">
+                        <nz-form-explain *ngIf="validateForm.get('phone')?.dirty && validateForm.get('phone')?.errors">
+                            请输入11位手机号码!
+                        </nz-form-explain>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <div nz-col [nzSm]="{ span: 6, offset: 8 }" [nzXs]="{ span: 24 }">
+                        <div class="child-flex-name">
+                            <span class="iconfont icon-style-red">&#xe61e;</span>
+                            <span class="font-style">邮箱</span>
+                        </div>
+                        <!--<app-form-title [formTitle]="'邮箱'"></app-form-title>-->
+                    </div>
+                    <nz-form-control [nzSm]="{ span: 6, offset: 8 }" [nzXs]="{ span: 24 }">
+                        <input nz-input id="email" formControlName="email">
+                        <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors">
+                            请输入合法的邮箱地址!
+                        </nz-form-explain>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <div nz-col [nzSm]="{ span: 6, offset: 8 }" [nzXs]="{ span: 24 }">
+                        <div class="child-flex-name">
+                            <span class="iconfont icon-style-red">&#xe61e;</span>
+                            <span class="font-style">密码</span>
+                        </div>
+                        <!--<app-form-title [formTitle]="'密码'"></app-form-title>-->
+                    </div>
+                    <nz-form-control [nzSm]="{ span: 6, offset: 8 }" [nzXs]="{ span: 24 }">
+                        <input nz-input type="password" id="password" formControlName="password" (ngModelChange)="updateConfirmValidator()">
+                        <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">
+                            请输入8-32位密码，只支持数字及英文。
+                        </nz-form-explain>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <div nz-col [nzSm]="{ span: 6, offset: 8 }" [nzXs]="{ span: 24 }">
+                        <div class="child-flex-name">
+                            <span class="iconfont icon-style-red">&#xe61e;</span>
+                            <span class="font-style">重复密码</span>
+                        </div>
+                    </div>
+                    <nz-form-control [nzSm]="{ span: 6, offset: 8 }" [nzXs]="{ span: 24 }">
+                        <input nz-input type="password" formControlName="checkPassword" id="checkPassword">
+                        <nz-form-explain *ngIf="validateForm.get('checkPassword')?.dirty && validateForm.get('checkPassword')?.errors">
+                            <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('required')">
+                                请输入8-32位密码，只支持数字及英文。
+                            </ng-container>
+                            <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('confirm')">
+                                两次密码不一致!
+                            </ng-container>
+                        </nz-form-explain>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item style="margin-bottom:8px;">
+                    <div nz-col [nzSm]="{ span: 6, offset: 8 }" [nzXs]="{ span: 24 }">
+                        <button nz-button nzType="primary" [disabled]="!validateForm.valid">保存</button>
+                        <button nz-button (click)="resetForm($event)">取消</button>
+                    </div>
+                </nz-form-item>
+            </form>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,35 @@
+<div class="ps-dc-title">
+    项目管理
+</div>
+
+<div nz-row>
+    <div nz-col [nzMd]="9" [nzLg]="14"></div>
+    <div nz-col [nzXs]="24" [nzSm]="10" [nzMd]="6" [nzLg]="4" style="padding: 10px 10px 0;">
+        <input nz-input [(ngModel)]="projectName" (ngModelChange)="projectNameChanged()" placeholder="请输入项目名称" />
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="10" [nzMd]="6" [nzLg]="4" style="padding: 10px 10px 0;">
+        <input nz-input [(ngModel)]="creator" (ngModelChange)="creatorChanged()" placeholder="请输入创建者者名字" />
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="4" [nzMd]="3" [nzLg]="2" style="padding: 10px 10px 0;">
+        <button (click)="resetKey()" class="pl-screen-width"  nz-button nzType="primary">重置</button>
+    </div>
+</div>
+
+<div nz-row>
+    <div nz-col [nzSpan]="24">
+        <div style="margin: 20px;">
+            <app-ps-table [loading]="loading"
+                          [dataSet]="listOfData"
+                          [isCheckBox]="false"
+                          [headered]="headered.headered"
+                          [pageIndex]="pageIndex"
+                          [pageSize]="pageSize"
+                          [total]="total"
+                          (pageIndexEvent)="pageIndexEvent($event)"
+                          (pageSizeEvent)="pageSizeEvent($event)"
+                          (pageSortEvent)="pageSortEvent($event)"
+                          (searchEvent)="searchEvent($event)"
+                          (updateFilterEvent)="updateFilterEvent($event)"></app-ps-table>
+        </div>
+    </div>
+</div>
